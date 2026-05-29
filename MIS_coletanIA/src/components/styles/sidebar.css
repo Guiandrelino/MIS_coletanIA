@@ -32,15 +32,15 @@ html[data-theme="dark"] .sidebar {
 
 .logo,
 .sidebar__logo {
-  width: 72px;
-  height: 72px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--logo-bg);
   display: grid;
   place-items: center;
   color: var(--logo-fg);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 17px;
   letter-spacing: 0.5px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 6px 18px rgba(0,0,0,0.25);
   position: relative;
@@ -50,39 +50,13 @@ html[data-theme="dark"] .sidebar {
 
 html[data-theme="dark"] .logo,
 html[data-theme="dark"] .sidebar__logo {
-  width: 36px;
-  height: 36px;
-  font-size: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-html[data-theme="dark"] .logo::before,
-html[data-theme="dark"] .sidebar__logo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 50%, transparent 35%, #fff 36%, #fff 41%, transparent 42%),
-    radial-gradient(circle at 50% 50%, #fff 18%, transparent 19%);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .logo-text,
 .sidebar__logo-text {
-  color: var(--text);
-  font-weight: 700;
-  font-size: 22px;
-}
-
-html[data-theme="light"] .logo-text,
-html[data-theme="light"] .sidebar__logo-text {
   display: none;
-}
-
-html[data-theme="dark"] .logo-text,
-html[data-theme="dark"] .sidebar__logo-text {
-  display: inline-block;
 }
 
 .nav,

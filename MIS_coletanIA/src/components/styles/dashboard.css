@@ -816,6 +816,92 @@
   background: var(--c-cyan);
 }
 
+/* DARK MODE */
+
+html[data-theme="dark"] .construct-dashboard-host .app-main {
+  background: transparent;
+}
+
+html[data-theme="dark"] .construct-dashboard {
+  --c-surface: rgba(255, 255, 255, 0.04);
+  --c-surface-hi: rgba(255, 255, 255, 0.07);
+  --c-border: rgba(255, 255, 255, 0.09);
+  --c-border-hi: rgba(255, 255, 255, 0.16);
+  --c-text: #e9eef5;
+  --c-text-2: #a4adba;
+  --c-text-3: #7b8593;
+  --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --c-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --c-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --c-blur: blur(14px) saturate(140%);
+}
+
+html[data-theme="dark"] .construct-plan {
+  background: linear-gradient(
+    160deg,
+    rgba(18, 35, 65, 0.7) 0%,
+    rgba(12, 24, 50, 0.6) 100%
+  );
+}
+
+html[data-theme="dark"] .construct-ann {
+  background: rgba(12, 22, 42, 0.88);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .construct-mini-score {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .construct-plan__controls button {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--c-text-2);
+}
+
+html[data-theme="dark"] .construct-alert {
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+html[data-theme="dark"] .construct-alert__icon.red {
+  background: rgba(229, 57, 53, 0.15);
+}
+
+html[data-theme="dark"] .construct-alert__icon.amber {
+  background: rgba(245, 130, 10, 0.15);
+}
+
+html[data-theme="dark"] .construct-alert__icon.green {
+  background: rgba(0, 184, 122, 0.15);
+}
+
+html[data-theme="dark"] .construct-phase > div {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .construct-week__bars div {
+  background: rgba(26, 90, 255, 0.25);
+}
+
+html[data-theme="dark"] .construct-badge.green,
+html[data-theme="dark"] .pill-green {
+  background: rgba(0, 184, 122, 0.14);
+}
+
+html[data-theme="dark"] .construct-badge.blue {
+  background: rgba(26, 90, 255, 0.14);
+}
+
+html[data-theme="dark"] .pill-amber {
+  background: rgba(245, 130, 10, 0.14);
+}
+
+html[data-theme="dark"] .construct-team span:nth-child(4) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1280px) {

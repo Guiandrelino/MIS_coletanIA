@@ -428,6 +428,3 @@ export function Projetos() {
 }
 
 export default Projetos;
-export const Projetos = Projects;
-
-export default Projects;

@@ -357,21 +357,65 @@ function OutrasObrasCard() {
 function RightKpis() {
   return (
     <aside className="construct-right">
-      <div className="construct-kpi-grid">
-        <article className="construct-kpi">
+      <article className="construct-card construct-kpi-budget">
+        <div className="construct-kpi-header">
           <span>Budget</span>
-          <strong className="text-blue">4,2M</strong>
           <small className="pill-green">↑ 3%</small>
-          <div className="kpi-deco blue" />
-        </article>
+        </div>
 
-        <article className="construct-kpi">
-          <span>Prazo</span>
-          <strong className="text-amber">+7d</strong>
-          <small className="pill-amber">⚠ Atenção</small>
-          <div className="kpi-deco amber" />
-        </article>
-      </div>
+        <strong className="text-blue">R$ 4,2M</strong>
+
+        <div className="construct-budget-bar">
+          <div className="construct-budget-bar__fill" style={{ width: "79%" }} />
+        </div>
+
+        <div className="construct-budget-details">
+          <div>
+            <small>Consumido</small>
+            <strong className="text-blue">R$ 3,3M</strong>
+          </div>
+          <div>
+            <small>Restante</small>
+            <strong>R$ 0,9M</strong>
+          </div>
+          <div>
+            <small>Uso</small>
+            <strong>79%</strong>
+          </div>
+        </div>
+
+        <div className="kpi-deco blue" />
+      </article>
+
+      <article className="construct-card construct-kpi-deadline">
+        <div className="construct-kpi-header">
+          <span>Dias Restantes</span>
+          <small className="pill-amber">⚠ Atraso</small>
+        </div>
+
+        <strong className="text-amber">28d</strong>
+
+        <div className="construct-deadline-grid">
+          <div>
+            <small>Entrega prevista</small>
+            <strong>15 Jul 2025</strong>
+          </div>
+          <div>
+            <small>Data original</small>
+            <strong>08 Jul 2025</strong>
+          </div>
+          <div>
+            <small>Atraso atual</small>
+            <strong className="text-amber">+7 dias</strong>
+          </div>
+          <div>
+            <small>Concluído</small>
+            <strong>78%</strong>
+          </div>
+        </div>
+
+        <div className="kpi-deco amber" />
+      </article>
 
       <article className="construct-card construct-week">
         <div className="construct-card__head">
@@ -513,10 +557,10 @@ export function Dashboard() {
       className="construct-dashboard-host"
     >
       <main className="construct-dashboard">
-        <TopSummary />
-
         <section className="construct-main-grid">
           <div className="construct-center">
+            <TopSummary />
+
             <BlueprintCard />
 
             <div className="construct-bottom-grid">

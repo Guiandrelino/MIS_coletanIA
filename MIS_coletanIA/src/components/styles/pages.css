@@ -136,8 +136,8 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .works-grid {
@@ -300,57 +300,11 @@
 }
 
 .pending-check {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  flex: 0 0 auto;
-}
-
-.pending-check input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-.pending-check span {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.18);
+  border: 2px solid rgba(0, 0, 0, 0.16);
   background: rgba(255, 255, 255, 0.32);
-  display: grid;
-  place-items: center;
-  transition: background 0.15s ease, border-color 0.15s ease;
-  flex: 0 0 auto;
-}
-
-.pending-check input:checked + span {
-  background: #16a34a;
-  border-color: #16a34a;
-}
-
-.pending-check span::after {
-  content: "";
-  display: none;
-  width: 5px;
-  height: 9px;
-  border: 2.5px solid #fff;
-  border-top: 0;
-  border-left: 0;
-  transform: rotate(42deg) translate(-1px, -1px);
-}
-
-.pending-check input:checked + span::after {
-  display: block;
-}
-
-.pending-row-card.is-done .pending-main > strong {
-  text-decoration: line-through;
-  opacity: 0.45;
 }
 
 .pending-main {
@@ -582,133 +536,37 @@
    =============================== */
 
 .project-card {
-  border-radius: 28px;
+  border-radius: 30px;
+  padding: 22px;
   background: var(--card);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card.is-warning {
-  border-color: rgba(245, 158, 11, 0.28);
-}
-
-.project-card__img {
-  width: 100%;
-  height: 185px;
-  object-fit: cover;
-  display: block;
-  flex: 0 0 auto;
-}
-
-.project-card__body {
-  padding: 18px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-}
-
-.project-card__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
 }
 
 .project-card h3 {
   margin: 0;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 850;
+  letter-spacing: -0.04em;
   color: var(--text);
 }
 
 .project-card p {
-  margin: 0;
-  font-size: 13px;
+  margin: 8px 0 0;
+  font-size: 14px;
   line-height: 1.5;
-  color: var(--text-3);
+  color: var(--muted);
 }
 
-.project-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.project-card__info span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-3);
-}
-
-.project-card__progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2px;
-}
-
-.project-card__progress-header span {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.project-card__progress-header strong {
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.project-card__stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 12px;
-}
-
-.project-card__stats span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-2);
-}
-
-.project-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 4px;
-}
-
-.project-card__tags {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.project-card .btn--ghost.project-card__ver-btn {
-  min-height: 38px;
-  padding: 0 16px;
-  font-size: 13px;
-  flex: 0 0 auto;
+.project-card.is-warning {
+  border-color: rgba(245, 158, 11, 0.24);
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
+  height: 9px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.07);
   overflow: hidden;
@@ -717,7 +575,7 @@
 .progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--green-600), var(--blue), var(--purple));
+  background: linear-gradient(90deg, var(--accent), var(--accent-mid));
 }
 
 /* ===============================
@@ -1425,7 +1283,7 @@ html[data-theme="dark"] .supply-clean-warning {
   background: rgba(255, 255, 255, 0.08);
 }
 
-html[data-theme="dark"] .pending-check span {
+html[data-theme="dark"] .pending-check {
   border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.06);
 }
@@ -1452,7 +1310,7 @@ html[data-theme="dark"] .pending-progress-bar {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .center.feed-layout {
@@ -1511,10 +1369,6 @@ html[data-theme="dark"] .pending-progress-bar {
   }
 
   .summary-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1945,4 +1799,241 @@ html[data-theme="dark"] .alert-more-action {
   .alert-row-meta {
     gap: 10px;
   }
+}
+/* ===============================
+   ALERT CARD CLEAN
+   =============================== */
+
+.alert-card-clean {
+  border-radius: 28px;
+  padding: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(21, 34, 58, 0.95) 0%,
+    rgba(15, 24, 42, 0.96) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.alert-card-clean__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.alert-card-clean__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.alert-card-clean__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.alert-card-clean__icon.red {
+  background: rgba(239, 68, 68, 0.14);
+  color: #ff5c5c;
+}
+
+.alert-card-clean__icon.orange {
+  background: rgba(245, 158, 11, 0.14);
+  color: #ffb02e;
+}
+
+.alert-card-clean__icon.blue {
+  background: rgba(59, 130, 246, 0.14);
+  color: #59a2ff;
+}
+
+.alert-card-clean__icon.green {
+  background: rgba(34, 197, 94, 0.14);
+  color: #38d978;
+}
+
+.alert-card-clean__title-block {
+  min-width: 0;
+}
+
+.alert-card-clean__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.alert-card-clean__title-row strong {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 850;
+  color: #f4f7fb;
+}
+
+.alert-card-clean__title-block p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.alert-card-clean__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: rgba(226, 232, 240, 0.65);
+}
+
+.alert-card-clean__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert-card-clean__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.alert-card-clean__tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.alert-card-clean__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn--success-soft {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.btn--ghost-soft {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.btn--outline-soft {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: #f4f7fb;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+@media (max-width: 860px) {
+  .alert-card-clean__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alert-card-clean__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alert-card-clean__actions {
+    width: 100%;
+  }
+}
+/* ===============================
+   FILTROS — ESTADO ATIVO PADRÃO
+   Projetos, Suprimentos e Pendências
+   =============================== */
+
+.tabs button.active,
+.tabs button.is-active,
+.feed-tabs button.active,
+.feed-tabs button.is-active,
+.feed-filter button.active,
+.feed-filter button.is-active,
+.supply-filter button.active,
+.supply-filter button.is-active,
+.project-filter button.active,
+.project-filter button.is-active,
+.pending-filter button.active,
+.pending-filter button.is-active {
+  background: #023e8a !important;
+  color: #ffffff !important;
+  box-shadow: 0 12px 28px rgba(2, 62, 138, 0.24) !important;
+}
+
+/* Garante que textos internos e contadores não fiquem brancos sobre branco */
+.tabs button.active span,
+.tabs button.is-active span,
+.feed-tabs button.active span,
+.feed-tabs button.is-active span,
+.supply-filter button.active span,
+.supply-filter button.is-active span,
+.project-filter button.active span,
+.project-filter button.is-active span,
+.pending-filter button.active span,
+.pending-filter button.is-active span {
+  color: #ffffff !important;
+}
+
+/* Bolinha / contador de seleção dentro dos filtros */
+.tabs button.active .badge,
+.tabs button.is-active .badge,
+.tabs button.active .count,
+.tabs button.is-active .count,
+.tabs button.active .filter-count,
+.tabs button.is-active .filter-count,
+.feed-tabs button.active .badge,
+.feed-tabs button.is-active .badge,
+.feed-tabs button.active .count,
+.feed-tabs button.is-active .count {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+}
+
+/* Caso o seletor use uma bolinha visual própria */
+.tabs button.active::before,
+.tabs button.is-active::before,
+.feed-tabs button.active::before,
+.feed-tabs button.is-active::before,
+.supply-filter button.active::before,
+.supply-filter button.is-active::before,
+.project-filter button.active::before,
+.project-filter button.is-active::before,
+.pending-filter button.active::before,
+.pending-filter button.is-active::before {
+  background: #023e8a;
 }

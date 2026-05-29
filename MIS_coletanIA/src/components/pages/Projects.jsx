@@ -61,75 +61,92 @@ function ProjectCard({ project }) {
     project.priority === "critical";
 
   return (
-    <article className={`project-card${isWarning ? " is-warning" : ""}`}>
-      <img
-        src={project.image}
-        alt={project.name}
-        className="project-card__img"
-      />
+    <article className={`project-card ${isWarning ? "is-warning" : ""}`}>
+      <div className="flex items-start gap-16">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="file-icon"
+          style={{
+            width: 76,
+            height: 76,
+            borderRadius: 22,
+            objectFit: "cover",
+            padding: 0,
+          }}
+        />
 
-      <div className="project-card__body">
-        <div className="project-card__top">
-          <h3>{project.name}</h3>
-          <span className={`status-pill ${statusClass}`}>
-            {projectStatusLabels[project.status]}
-          </span>
-        </div>
+        <div className="min-w-0 w-full">
+          <div className="flex justify-between items-start gap-16">
+            <div className="min-w-0">
+              <h3>{project.name}</h3>
+              <p>{project.description}</p>
+            </div>
 
-        <p>{project.description}</p>
+            <span className={`status-pill ${statusClass}`}>
+              {projectStatusLabels[project.status]}
+            </span>
+          </div>
 
-        <div className="project-card__info">
-          <span>
-            <MapPin size={14} aria-hidden="true" />
-            {project.location}
-          </span>
-          <span>
-            <Building2 size={14} aria-hidden="true" />
-            {project.client}
-          </span>
-        </div>
-
-        <div className="project-card__progress-header">
-          <span>Progresso</span>
-          <strong>{project.progress}%</strong>
-        </div>
-
-        <div className="progress-bar">
-          <div
-            className="progress-fill"
-            style={{ width: `${project.progress}%` }}
-          />
-        </div>
-
-        <div className="project-card__stats">
-          <span>
-            <DollarSign size={14} aria-hidden="true" />
-            {project.budget}
-          </span>
-          <span>
-            <Users size={14} aria-hidden="true" />
-            {project.teamSize} pessoas
-          </span>
-          <span>
-            <CalendarClock size={14} aria-hidden="true" />
-            {project.deadline}
-          </span>
-          <span>
-            <AlertTriangle size={14} aria-hidden="true" />
-            {project.alerts} alertas
-          </span>
-        </div>
-
-        <div className="project-card__footer">
-          <div className="project-card__tags">
+          <div className="flex items-center gap-8 mt-16">
             <span className={`badge badge--${priorityClass}`}>
               {projectPriorityLabels[project.priority]}
             </span>
+
             <span className="status-pill blue">{project.type}</span>
           </div>
-          <button type="button" className="btn--ghost project-card__ver-btn">
-            Ver projeto
-          </button>
+
+          <div className="progress-bar mt-20">
+            <div
+              className="progress-fill"
+              style={{ width: `${project.progress}%` }}
+            />
+          </div>
+
+          <div className="flex justify-between items-center mt-10">
+            <span className="text-muted">Progresso da obra</span>
+            <strong>{project.progress}%</strong>
+          </div>
+
+          <div className="content-grid grid-4 mt-20">
+            <div className="text-muted">
+              <span>Cliente</span>
+              <strong>{project.client}</strong>
+            </div>
+
+            <div className="text-muted">
+              <span>Orçamento</span>
+              <strong>{project.budget}</strong>
+            </div>
+
+            <div className="text-muted">
+              <span>Prazo</span>
+              <strong>{project.deadline}</strong>
+            </div>
+
+            <div className="text-muted">
+              <span>Equipe</span>
+              <strong>{project.teamSize}</strong>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center gap-16 mt-22">
+            <div className="flex items-center gap-12 text-muted">
+              <span className="flex items-center gap-6">
+                <MapPin size={15} aria-hidden="true" />
+                {project.location}
+              </span>
+
+              <span className="flex items-center gap-6">
+                <Users size={15} aria-hidden="true" />
+                {project.manager}
+              </span>
+            </div>
+
+            <button type="button" className="btn--ghost">
+              Ver detalhes
+            </button>
+          </div>
         </div>
       </div>
     </article>
@@ -411,3 +428,6 @@ export function Projetos() {
 }
 
 export default Projetos;
+export const Projetos = Projects;
+
+export default Projects;

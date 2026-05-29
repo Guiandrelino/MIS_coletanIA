@@ -2,12 +2,11 @@ import {
   ChevronDown,
   File,
   FileText,
-  Upload as UploadIcon,
+  Upload,
   Check,
 } from "lucide-react";
 
 import { AppShell } from "../layout/AppShell";
-import { ThemeSwitch } from "../ui/ThemeSwitch";
 
 const acceptedFormats = ["PDF", "DWG", "XLSX", "DOCX", "PNG/JPG", "ZIP"];
 
@@ -170,8 +169,6 @@ export function Upload() {
           </div>
 
           <div className="upload-project-page__actions">
-            <ThemeSwitch />
-
             <button type="button" className="upload-header-btn">
               Arquivos recentes
             </button>
@@ -202,7 +199,7 @@ export function Upload() {
               <input type="file" multiple hidden />
 
               <div className="upload-dropzone__icon">
-                <UploadIcon size={34} aria-hidden="true" />
+                <Upload size={34} aria-hidden="true" />
               </div>
 
               <h3>Arraste seus arquivos aqui</h3>

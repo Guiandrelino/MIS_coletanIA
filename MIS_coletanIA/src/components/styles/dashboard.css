@@ -771,10 +771,11 @@
 }
 
 .construct-bottom-card {
-  padding: 16px;
-  min-height: 238px;
+  padding: 14px 16px;
+  height: 210px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* ALERTS */

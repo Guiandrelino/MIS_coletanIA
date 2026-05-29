@@ -53,6 +53,7 @@ function StatCard({ stat }) {
 }
 
 function TaskCard({ task }) {
+  const [checked, setChecked] = useState(task.status === "completed");
   const priorityClass = taskPriorityClasses[task.priority] || "blue";
 
   const projectDotClass = {
@@ -82,8 +83,16 @@ function TaskCard({ task }) {
       : "normal";
 
   return (
-    <article className="pending-row-card">
-      <div className="pending-check" aria-hidden="true" />
+    <article className={`pending-row-card${checked ? " is-done" : ""}`}>
+      <label className="pending-check">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={() => setChecked((prev) => !prev)}
+          aria-label={`Marcar "${task.title}" como concluída`}
+        />
+        <span />
+      </label>
 
       <div className="pending-main">
         <strong>{task.title}</strong>

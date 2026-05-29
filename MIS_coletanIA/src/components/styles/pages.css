@@ -300,11 +300,57 @@
 }
 
 .pending-check {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.pending-check input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.pending-check span {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.16);
+  border: 2px solid rgba(0, 0, 0, 0.18);
   background: rgba(255, 255, 255, 0.32);
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  flex: 0 0 auto;
+}
+
+.pending-check input:checked + span {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.pending-check span::after {
+  content: "";
+  display: none;
+  width: 5px;
+  height: 9px;
+  border: 2.5px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(42deg) translate(-1px, -1px);
+}
+
+.pending-check input:checked + span::after {
+  display: block;
+}
+
+.pending-row-card.is-done .pending-main > strong {
+  text-decoration: line-through;
+  opacity: 0.45;
 }
 
 .pending-main {
@@ -1379,7 +1425,7 @@ html[data-theme="dark"] .supply-clean-warning {
   background: rgba(255, 255, 255, 0.08);
 }
 
-html[data-theme="dark"] .pending-check {
+html[data-theme="dark"] .pending-check span {
   border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.06);
 }

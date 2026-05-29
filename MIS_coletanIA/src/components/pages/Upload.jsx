@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 
 import { AppShell } from "../layout/AppShell";
+import { ThemeSwitch } from "../ui/ThemeSwitch";
 
 const acceptedFormats = ["PDF", "DWG", "XLSX", "DOCX", "PNG/JPG", "ZIP"];
 
@@ -169,6 +170,8 @@ export function Upload() {
           </div>
 
           <div className="upload-project-page__actions">
+            <ThemeSwitch />
+
             <button type="button" className="upload-header-btn">
               Arquivos recentes
             </button>

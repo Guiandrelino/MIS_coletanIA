@@ -77,6 +77,14 @@
   place-items: center;
 }
 
+.updates-sidebar__header .theme-switch {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+}
+
 .updates-search {
   height: 46px;
   border-radius: 15px;
@@ -820,7 +828,8 @@ html[data-theme="dark"] .updates-right__hero {
 
 html[data-theme="dark"] .updates-icon-btn,
 html[data-theme="dark"] .updates-circle-btn,
-html[data-theme="dark"] .updates-follow-btn {
+html[data-theme="dark"] .updates-follow-btn,
+html[data-theme="dark"] .updates-sidebar__header .theme-switch {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.1);
 }

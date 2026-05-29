@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { AppShell } from "../layout/AppShell";
+import { ThemeSwitch } from "../ui/ThemeSwitch";
 
 const works = [
   {
@@ -449,9 +450,12 @@ export function Atualizacoes() {
               <span className="updates-counter">24</span>
             </div>
 
-            <button type="button" className="updates-icon-btn">
-              <Plus size={18} />
-            </button>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <ThemeSwitch />
+              <button type="button" className="updates-icon-btn">
+                <Plus size={18} />
+              </button>
+            </div>
           </div>
 
           <label className="updates-search">

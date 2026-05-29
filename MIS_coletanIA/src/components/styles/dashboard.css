@@ -782,10 +782,10 @@
 
 .construct-alerts-panel {
   padding: 14px 16px;
-  height: 210px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  min-height: 0;
 }
 
 .construct-alert-list {

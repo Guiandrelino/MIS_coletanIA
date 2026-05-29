@@ -2,7 +2,7 @@ import {
   ChevronDown,
   File,
   FileText,
-  Upload,
+  Upload as UploadIcon,
   Check,
 } from "lucide-react";
 
@@ -199,7 +199,7 @@ export function Upload() {
               <input type="file" multiple hidden />
 
               <div className="upload-dropzone__icon">
-                <Upload size={34} aria-hidden="true" />
+                <UploadIcon size={34} aria-hidden="true" />
               </div>
 
               <h3>Arraste seus arquivos aqui</h3>

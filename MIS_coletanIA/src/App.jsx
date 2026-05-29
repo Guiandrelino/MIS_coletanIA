@@ -2,7 +2,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 
 import Dashboard from "./components/pages/Dashboard";
 import Feed from "./components/pages/Feed";
-import Projetos from "./components/pages/Projetos";
+import Projetos from "./components/pages/Projects";
 import Suprimentos from "./components/pages/Suprimento";
 import Pendencias from "./components/pages/Pendencias";
 import Alertas from "./components/pages/Alertas";

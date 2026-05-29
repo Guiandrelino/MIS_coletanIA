@@ -455,7 +455,7 @@ function MiniScore({ label, value, color }) {
 
 function AlertsPanel() {
   return (
-    <section className="construct-card construct-bottom-card">
+    <section className="construct-card construct-alerts-panel">
       <div className="construct-card__head">
         <span>Alertas</span>
         <small className="pill-amber">3 pendentes</small>

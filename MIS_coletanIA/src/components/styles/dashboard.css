@@ -94,13 +94,19 @@
 
 /* HERO */
 
-.construct-hero {
-  min-height: 138px;
-  padding: 18px 22px;
+/* TOP ROW */
+
+.construct-top-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px 150px;
+  grid-template-columns: minmax(0, 1fr) 200px 148px;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.construct-hero {
+  padding: 18px 22px;
+  display: flex;
   align-items: center;
-  gap: 18px;
 }
 
 .construct-hero__main {
@@ -574,6 +580,49 @@
 
 .kpi-deco.amber {
   background: var(--c-amber);
+}
+
+.kpi-deco.green {
+  background: var(--c-green);
+}
+
+/* SAFETY CARD */
+
+.construct-safety {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.construct-safety > span {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-text-3);
+  line-height: 1.3;
+}
+
+.construct-safety > strong {
+  display: block;
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.construct-safety > small {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-text-3);
 }
 
 .construct-card__head {
@@ -1061,12 +1110,12 @@ html[data-theme="dark"] .construct-work-row__bar {
 }
 
 @media (max-width: 980px) {
-  .construct-hero {
-    grid-template-columns: 1fr;
+  .construct-top-row {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .construct-hero__actions {
-    align-items: flex-start;
+  .construct-top-row > .construct-hero {
+    grid-column: 1 / -1;
   }
 
   .construct-hero__stats {

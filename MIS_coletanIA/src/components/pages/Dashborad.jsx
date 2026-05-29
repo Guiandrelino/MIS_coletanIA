@@ -98,56 +98,46 @@ function TopSummary() {
           </div>
         </div>
       </div>
-
-      <div className="construct-ring">
-        <svg width="82" height="82" viewBox="0 0 82 82">
-          <circle
-            cx="41"
-            cy="41"
-            r="34"
-            fill="none"
-            stroke="rgba(26,90,255,.1)"
-            strokeWidth="7"
-          />
-          <circle
-            cx="41"
-            cy="41"
-            r="34"
-            fill="none"
-            stroke="url(#dashboardRing)"
-            strokeWidth="7"
-            strokeLinecap="round"
-            strokeDasharray="214"
-            strokeDashoffset="47"
-            transform="rotate(-90 41 41)"
-          />
-
-          <defs>
-            <linearGradient id="dashboardRing" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#1a5aff" />
-              <stop offset="100%" stopColor="#00bcd4" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <div>
-          <strong>78%</strong>
-          <span>concluído</span>
-        </div>
-      </div>
-
-      <div className="construct-hero__actions">
-        <span className="construct-badge green">✓ No prazo</span>
-        <span className="construct-badge blue">IA Score 8.7</span>
-
-        <div className="construct-team">
-          <span>MG</span>
-          <span>RS</span>
-          <span>TK</span>
-          <span>+6</span>
-        </div>
-      </div>
     </section>
+  );
+}
+
+function WeekCard() {
+  return (
+    <article className="construct-card construct-week">
+      <div className="construct-card__head">
+        <span>Progresso Semanal</span>
+        <small>Mai 2025</small>
+      </div>
+
+      <div className="construct-week__bars">
+        {weekProgress.map((value, index) => (
+          <div
+            key={index}
+            className={index === weekProgress.length - 1 ? "is-active" : ""}
+            style={{ height: `${(value / 78) * 100}%` }}
+          />
+        ))}
+      </div>
+
+      <div className="construct-week__labels">
+        <span>S2</span>
+        <span>S3</span>
+        <span>S4</span>
+        <span>Hoje</span>
+      </div>
+    </article>
+  );
+}
+
+function SafetyCard() {
+  return (
+    <article className="construct-card construct-safety">
+      <span>Dias sem acidentes</span>
+      <strong className="text-green">47</strong>
+      <small>consecutivos</small>
+      <div className="kpi-deco green" />
+    </article>
   );
 }
 
@@ -417,30 +407,6 @@ function RightKpis() {
         <div className="kpi-deco amber" />
       </article>
 
-      <article className="construct-card construct-week">
-        <div className="construct-card__head">
-          <span>Progresso Semanal</span>
-          <small>Mai 2025</small>
-        </div>
-
-        <div className="construct-week__bars">
-          {weekProgress.map((value, index) => (
-            <div
-              key={index}
-              className={index === weekProgress.length - 1 ? "is-active" : ""}
-              style={{ height: `${(value / 78) * 100}%` }}
-            />
-          ))}
-        </div>
-
-        <div className="construct-week__labels">
-          <span>S2</span>
-          <span>S3</span>
-          <span>S4</span>
-          <span>Hoje</span>
-        </div>
-      </article>
-
       <article className="construct-card construct-ia">
         <div className="construct-card__head">
           <span>Score IA</span>
@@ -559,7 +525,11 @@ export function Dashboard() {
       <main className="construct-dashboard">
         <section className="construct-main-grid">
           <div className="construct-center">
-            <TopSummary />
+            <div className="construct-top-row">
+              <TopSummary />
+              <WeekCard />
+              <SafetyCard />
+            </div>
 
             <BlueprintCard />
 

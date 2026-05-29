@@ -1278,6 +1278,10 @@ html[data-theme="dark"] .pending-row-card {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+html[data-theme="dark"] .progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 html[data-theme="dark"] .supply-clean-toggle,
 html[data-theme="dark"] .supply-clean-warning {
   background: rgba(255, 255, 255, 0.08);

@@ -427,6 +427,147 @@
   white-space: nowrap;
 }
 
+/* DARK MODE */
+
+html[data-theme="dark"] .upload-project-page {
+  background: linear-gradient(180deg, #0e1826 0%, #0a1019 100%);
+}
+
+html[data-theme="dark"] .upload-project-page__header h1 {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-project-page__header p {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-project-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .upload-project-card__header h2 {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-project-card__header p {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-header-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-project-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-dropzone {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .upload-dropzone__icon {
+  background: rgba(29, 111, 255, 0.12);
+  border-color: rgba(29, 111, 255, 0.2);
+}
+
+html[data-theme="dark"] .upload-dropzone h3 {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-dropzone p {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-dropzone p strong {
+  color: var(--green-400);
+}
+
+html[data-theme="dark"] .upload-dropzone__formats span {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-2);
+}
+
+html[data-theme="dark"] .upload-project-field {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .upload-project-field > span {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-project-field__value strong {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-project-field__value svg {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-footer-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-status-mini-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .upload-status-mini-card span {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-status-mini-card strong {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-status-check span.is-done {
+  background: rgba(20, 122, 77, 0.2);
+  color: var(--green-400);
+}
+
+html[data-theme="dark"] .upload-status-check span.is-waiting {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-status-check strong {
+  color: var(--text-2);
+}
+
+html[data-theme="dark"] .upload-file-row {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .upload-file-row__icon {
+  background: rgba(29, 111, 255, 0.12);
+}
+
+html[data-theme="dark"] .upload-file-row__content strong {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .upload-file-row__content span {
+  color: var(--text-3);
+}
+
+html[data-theme="dark"] .upload-file-row__status {
+  background: rgba(20, 122, 77, 0.18);
+  color: var(--green-400);
+}
+
 /* RESPONSIVO */
 
 @media (max-width: 1280px) {

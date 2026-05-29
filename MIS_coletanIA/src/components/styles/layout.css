@@ -1,0 +1,198 @@
+body {
+  background:
+    radial-gradient(1200px 600px at 100% 0%, color-mix(in oklab, var(--bg) 88%, white 12%), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, color-mix(in oklab, var(--bg) 92%, white 8%), transparent 60%),
+    var(--bg);
+}
+
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(900px 600px at 85% -10%, #2a3a52 0%, transparent 55%),
+    radial-gradient(800px 600px at 15% 105%, #15243a 0%, transparent 55%),
+    radial-gradient(700px 500px at 50% 50%, #14202f 0%, transparent 60%),
+    linear-gradient(160deg, #0c1420 0%, #0a1019 100%);
+}
+
+.app,
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  gap: var(--page-gap);
+  padding: var(--page-padding);
+}
+
+.main,
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.main.is-fixed-height,
+.app-main.is-fixed-height {
+  height: calc(100vh - var(--page-padding) * 2);
+  min-height: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--topbar-height);
+}
+
+.top-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.page-head,
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.page-head h1,
+.page-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  color: var(--text);
+}
+
+.page-head .sub,
+.page-header .sub,
+.page-header p {
+  margin-top: 9px;
+  color: var(--text-3);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.content-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.layout-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+}
+
+.layout-3 {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 320px;
+  gap: 20px;
+  min-height: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-head h2 {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.section-head p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+@media (max-width: 1280px) {
+  .layout-2,
+  .layout-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .app,
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .main,
+  .app-main {
+    width: 100%;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .top-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .page-head,
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 14px;
+    --page-gap: 16px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page-head h1,
+  .page-header h1 {
+    font-size: 32px;
+  }
+}

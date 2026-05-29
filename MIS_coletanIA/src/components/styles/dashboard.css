@@ -816,6 +816,64 @@
   background: var(--c-cyan);
 }
 
+/* OUTRAS OBRAS */
+
+.construct-works-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.construct-work-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px 34px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.construct-work-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.construct-work-row__info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-text);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.construct-work-row__info span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--c-text-3);
+  font-weight: 600;
+}
+
+.construct-work-row__bar {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.construct-work-row__bar div {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.construct-work-row > strong {
+  font-size: 11px;
+  font-weight: 900;
+  text-align: right;
+}
+
 /* DARK MODE */
 
 html[data-theme="dark"] .construct-dashboard-host .app-main {
@@ -900,6 +958,14 @@ html[data-theme="dark"] .pill-amber {
 
 html[data-theme="dark"] .construct-team span:nth-child(4) {
   background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .construct-work-row {
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+html[data-theme="dark"] .construct-work-row__bar {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* RESPONSIVE */

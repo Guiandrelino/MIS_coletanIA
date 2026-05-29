@@ -49,6 +49,14 @@ const alerts = [
 const weekProgress = [58, 62, 68, 65, 70, 74, 78];
 const iaSpark = [6.5, 7, 7.4, 7.9, 8.2, 8.5, 8.7];
 
+const otherProjects = [
+  { id: "op-1", name: "Residencial Aurora", location: "Campinas, SP", progress: 45, color: "blue" },
+  { id: "op-2", name: "Torre Central", location: "São Paulo, SP", progress: 62, color: "blue" },
+  { id: "op-3", name: "Edifício Horizonte", location: "São Paulo, SP", progress: 88, color: "green" },
+  { id: "op-4", name: "Vila Verde", location: "Curitiba, PR", progress: 22, color: "amber" },
+  { id: "op-5", name: "Condomínio Mar Azul", location: "Santos, SP", progress: 34, color: "amber" },
+];
+
 function TopSummary() {
   return (
     <section className="construct-card construct-hero">
@@ -318,6 +326,34 @@ function Annotation({ className, color, label, value, sub }) {
   );
 }
 
+function OutrasObrasCard() {
+  return (
+    <section className="construct-card construct-bottom-card">
+      <div className="construct-card__head">
+        <span>Outras Obras</span>
+        <small>{otherProjects.length} projetos ativos</small>
+      </div>
+
+      <div className="construct-works-list">
+        {otherProjects.map((project) => (
+          <div key={project.id} className="construct-work-row">
+            <div className="construct-work-row__info">
+              <strong>{project.name}</strong>
+              <span>{project.location}</span>
+            </div>
+
+            <div className="construct-work-row__bar">
+              <div style={{ width: `${project.progress}%` }} className={`fill-${project.color}`} />
+            </div>
+
+            <strong className={`text-${project.color}`}>{project.progress}%</strong>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function RightKpis() {
   return (
     <aside className="construct-right">
@@ -392,6 +428,8 @@ function RightKpis() {
           <MiniScore label="Segurança" value="9.5" color="green" />
         </div>
       </article>
+
+      <AlertsPanel />
     </aside>
   );
 }
@@ -482,7 +520,7 @@ export function Dashboard() {
             <BlueprintCard />
 
             <div className="construct-bottom-grid">
-              <AlertsPanel />
+              <OutrasObrasCard />
               <PhasesPanel />
             </div>
           </div>

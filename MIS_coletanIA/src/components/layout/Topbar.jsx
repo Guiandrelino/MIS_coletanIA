@@ -1,5 +1,5 @@
 import { Bell, Plus, Search, Settings } from "lucide-react";
-import { ThemeSwitch } from "../ui/ThemeSwitch";
+import { ThemeSwitch } from "../ui/Themeswitch";
 
 export function Topbar({
   searchPlaceholder = "Buscar obras, tarefas, alertas...",

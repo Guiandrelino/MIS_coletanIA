@@ -1,357 +1,299 @@
-import { useMemo, useState } from "react";
 import {
-  AlertTriangle,
-  Building2,
-  CalendarClock,
-  CheckCircle2,
-  FileText,
-  Image,
-  MapPin,
+  Grid2X2,
+  Heart,
+  List,
   MessageCircle,
-  Paperclip,
-  Search,
+  Plus,
   Send,
-  ThumbsUp,
-  User,
 } from "lucide-react";
 
 import { AppShell } from "../layout/AppShell";
 
-import {
-  updates,
-  updateTypeLabels,
-  updateTypeClasses,
-  updateStatusLabels,
-  updateStatusClasses,
-  updatePriorityClasses,
-  attentionUpdates,
-  recentUpdates,
-} from "../data/updates";
+const storyImages = [
+  {
+    id: 1,
+    name: "Sua obra",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+    own: true,
+  },
+  {
+    id: 2,
+    name: "Jardins",
+    image:
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 3,
+    name: "Corporate",
+    image:
+      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 4,
+    name: "Villa Aurora",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 5,
+    name: "Loft Panorama",
+    image:
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 6,
+    name: "Est. Greenview",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 7,
+    name: "Horizonte",
+    image:
+      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 8,
+    name: "Aharada",
+    image:
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80",
+  },
+];
 
-import { alerts } from "../data/alerts";
-import { projects } from "../data/projects";
+const feedCards = [
+  {
+    id: 1,
+    project: "Villa Aurora",
+    location: "Florianópolis, SC",
+    image:
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=1000&q=80",
+    status: "Em andamento",
+    statusTone: "green",
+    title: "Estrutura - Fundação",
+    progress: 72,
+    color: "#18a46a",
+    manager: "Mariana Costa",
+    role: "Engenheira Responsável",
+    managerImage:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+    time: "Hoje, 08:42",
+    likes: 128,
+    comments: 32,
+  },
+  {
+    id: 2,
+    project: "Residencial Jardins",
+    location: "São Paulo, SP",
+    image:
+      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=80",
+    status: "Acabamento",
+    statusTone: "blue",
+    title: "Acabamento - Revestimentos",
+    progress: 48,
+    color: "#2967e9",
+    manager: "João Pedro",
+    role: "Arquiteto",
+    managerImage:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+    time: "Ontem, 17:30",
+    likes: 96,
+    comments: 28,
+  },
+  {
+    id: 3,
+    project: "Corporate Tower",
+    location: "Curitiba, PR",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
+    status: "Instalações",
+    statusTone: "purple",
+    title: "Instalações elétricas",
+    progress: 25,
+    color: "#7c4dff",
+    manager: "Fernanda Lima",
+    role: "Engenheira Elétrica",
+    managerImage:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
+    time: "Ontem, 11:15",
+    likes: 74,
+    comments: 11,
+  },
+];
 
-function getUpdateIcon(type) {
-  const iconMap = {
-    progress: CheckCircle2,
-    warning: AlertTriangle,
-    document: FileText,
-    media: Image,
-    success: CheckCircle2,
-    alert: AlertTriangle,
-  };
-
-  return iconMap[type] || FileText;
-}
-
-function FeedComposer() {
+function FeedStories() {
   return (
-    <section className="composer">
-      <div className="flex items-start gap-12">
-        <div className="avatar" aria-hidden="true">
-          EN
-        </div>
+    <section className="feed-stories">
+      <div className="feed-stories__header">
+        <h2>Stories de obras</h2>
+        <button type="button">Ver todos</button>
+      </div>
 
-        <div className="w-full">
-          <label className="sr-only" htmlFor="feed-message">
-            Criar atualização
-          </label>
+      <div className="feed-stories__row">
+        {storyImages.map((story) => (
+          <article key={story.id} className="feed-story">
+            <div className="feed-story__avatar">
+              <img src={story.image} alt={story.name} />
 
-          <textarea
-            id="feed-message"
-            rows="3"
-            placeholder="Compartilhe uma atualização da obra..."
-            className="w-full"
-            style={{
-              resize: "none",
-              color: "var(--text)",
-              lineHeight: 1.5,
-            }}
-          />
-
-          <div className="flex justify-between items-center gap-16 mt-16">
-            <div className="flex items-center gap-8">
-              <button type="button" className="btn--ghost">
-                <Paperclip size={16} aria-hidden="true" />
-                Anexo
-              </button>
-
-              <button type="button" className="btn--ghost">
-                <Image size={16} aria-hidden="true" />
-                Foto
-              </button>
+              {story.own && <span className="feed-story__plus">+</span>}
+              {story.own && <span className="feed-story__check">✓</span>}
             </div>
 
-            <button type="button" className="btn btn--primary">
-              <Send size={16} aria-hidden="true" />
-              Publicar
-            </button>
-          </div>
+            <span>{story.name}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FeedControls() {
+  return (
+    <section className="feed-controls">
+      <div className="feed-tabs">
+        <button type="button" className="active">
+          Todos
+        </button>
+
+        <button type="button">Seguindo</button>
+
+        <button type="button">Em andamento</button>
+
+        <button type="button">Concluídos</button>
+      </div>
+
+      <div className="feed-actions">
+        <button type="button" className="feed-sort">
+          Mais recentes⌄
+        </button>
+
+        <div className="feed-view-toggle">
+          <button
+            type="button"
+            className="feed-view-btn active"
+            aria-label="Visualizar em grade"
+          >
+            <Grid2X2 size={18} />
+          </button>
+
+          <button
+            type="button"
+            className="feed-view-btn"
+            aria-label="Visualizar em lista"
+          >
+            <List size={18} />
+          </button>
         </div>
       </div>
     </section>
   );
 }
 
-function FeedPost({ update }) {
-  const TypeIcon = getUpdateIcon(update.type);
-  const typeClass = updateTypeClasses[update.type] || "blue";
-  const statusClass = updateStatusClasses[update.status] || "blue";
-  const priorityClass = updatePriorityClasses[update.priority] || "blue";
-
+function WorkCard({ item }) {
   return (
-    <article
-      className={`alert ${
-        update.priority === "critical" ? "is-critical" : ""
-      } ${update.status === "attention" ? "is-warning" : ""}`}
-    >
-      <div className="flex justify-between items-start gap-16">
-        <div className="flex items-start gap-12 min-w-0">
-          <div className="avatar" aria-hidden="true">
-            {update.author
-              .split(" ")
-              .map((name) => name[0])
-              .slice(0, 2)
-              .join("")}
-          </div>
+    <article className="feed-work-card">
+      <header className="feed-card-head">
+        <div className="feed-author">
+          <img src={item.image} alt="" />
 
-          <div className="min-w-0">
-            <div className="flex items-center gap-8">
-              <strong>{update.author}</strong>
-              <span className="text-muted">•</span>
-              <span className="text-muted">{update.role}</span>
-            </div>
-
-            <div className="flex items-center gap-8 mt-4 text-muted">
-              <Building2 size={15} aria-hidden="true" />
-              <span>{update.project}</span>
-              <span>•</span>
-              <span>{update.timeLabel}</span>
-            </div>
+          <div>
+            <strong>{item.project}</strong>
+            <span>{item.location}</span>
           </div>
         </div>
 
-        <span className={`status-pill ${typeClass}`}>
-          <TypeIcon size={14} aria-hidden="true" />
-          {updateTypeLabels[update.type]}
-        </span>
+        <button type="button" className="feed-more" aria-label="Mais opções">
+          ...
+        </button>
+      </header>
+
+      <div className="feed-card-image">
+        <img src={item.image} alt={item.project} />
+
+        <span className={`feed-status ${item.statusTone}`}>{item.status}</span>
       </div>
 
-      <div className="mt-20">
-        <h3>{update.title}</h3>
-        <p className="text-muted mt-8">{update.description}</p>
-      </div>
+      <section className="feed-progress-panel">
+        <div className="feed-progress-row">
+          <div
+            className="feed-ring"
+            style={{
+              "--progress": item.progress,
+              "--ring-color": item.color,
+            }}
+          >
+            <span>{item.progress}%</span>
+          </div>
 
-      <div className="content-grid grid-3 mt-20">
-        <div className="flex items-center gap-8 text-muted">
-          <MapPin size={16} aria-hidden="true" />
-          <span>{update.location}</span>
+          <div className="feed-progress-content">
+            <h3>{item.title}</h3>
+            <p>{item.progress}% concluído</p>
+
+            <div
+              className="feed-line-progress"
+              style={{ "--ring-color": item.color }}
+            >
+              <div style={{ width: `${item.progress}%` }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="feed-card-footer">
+        <div className="feed-manager">
+          <img src={item.managerImage} alt={item.manager} />
+
+          <div>
+            <strong>{item.manager}</strong>
+            <span>{item.role}</span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-8 text-muted">
-          <CalendarClock size={16} aria-hidden="true" />
-          <span>{update.timeLabel}</span>
-        </div>
+        <span className="feed-date">{item.time}</span>
+      </footer>
 
-        <div className="flex items-center gap-8 text-muted">
-          <User size={16} aria-hidden="true" />
-          <span>{update.category}</span>
-        </div>
-      </div>
+      <div className="feed-social">
+        <button type="button" className="add" aria-label="Adicionar">
+          <Plus size={18} />
+        </button>
 
-      <div className="flex justify-between items-center gap-16 mt-20">
-        <div className="flex items-center gap-8">
-          <span className={`badge badge--${statusClass}`}>
-            {updateStatusLabels[update.status]}
-          </span>
+        <button type="button" className="heart" aria-label="Curtir">
+          <Heart size={18} fill="currentColor" />
+          {item.likes}
+        </button>
 
-          <span className={`status-pill ${priorityClass}`}>
-            {update.priority === "critical" ? "Crítica" : "Prioridade"}
-          </span>
-        </div>
+        <button type="button" aria-label="Comentários">
+          <MessageCircle size={18} />
+          {item.comments}
+        </button>
 
-        <div className="flex items-center gap-12 text-muted">
-          <span className="flex items-center gap-4">
-            <Paperclip size={15} aria-hidden="true" />
-            {update.attachments}
-          </span>
-
-          <span className="flex items-center gap-4">
-            <MessageCircle size={15} aria-hidden="true" />
-            {update.comments}
-          </span>
-
-          <span className="flex items-center gap-4">
-            <ThumbsUp size={15} aria-hidden="true" />
-            {update.likes}
-          </span>
-        </div>
+        <button type="button" aria-label="Enviar">
+          <Send size={18} />
+        </button>
       </div>
     </article>
   );
 }
 
-function ProjectPanel() {
-  return (
-    <aside className="obra-panel section">
-      <div className="section-head">
-        <div>
-          <h2>Obras ativas</h2>
-          <p>Projetos com movimentação recente.</p>
-        </div>
-      </div>
-
-      <div className="alerts">
-        {projects.slice(0, 5).map((project) => (
-          <article key={project.id} className="file-item">
-            <img
-              src={project.image}
-              alt=""
-              className="file-icon"
-              style={{ objectFit: "cover", padding: 0 }}
-            />
-
-            <div className="file-info">
-              <strong>{project.name}</strong>
-              <span>{project.location}</span>
-            </div>
-
-            <span className="file-status">{project.progress}%</span>
-          </article>
-        ))}
-      </div>
-    </aside>
-  );
-}
-
-function InfoPanel() {
-  return (
-    <aside className="info-panel section">
-      <section>
-        <div className="section-head">
-          <div>
-            <h2>Em atenção</h2>
-            <p>Riscos e atualizações críticas.</p>
-          </div>
-        </div>
-
-        <div className="alerts mt-20">
-          {attentionUpdates.slice(0, 3).map((update) => (
-            <article key={update.id} className="file-item">
-              <div className="file-icon">
-                <AlertTriangle size={18} aria-hidden="true" />
-              </div>
-
-              <div className="file-info">
-                <strong>{update.title}</strong>
-                <span>{update.project}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-20">
-        <div className="section-head">
-          <div>
-            <h2>Alertas recentes</h2>
-            <p>Eventos pendentes de análise.</p>
-          </div>
-        </div>
-
-        <div className="alerts mt-20">
-          {alerts.slice(0, 4).map((alert) => (
-            <article key={alert.id} className="file-item">
-              <div className="file-icon">
-                <AlertTriangle size={18} aria-hidden="true" />
-              </div>
-
-              <div className="file-info">
-                <strong>{alert.title}</strong>
-                <span>{alert.project}</span>
-              </div>
-
-              <span className="file-status">{alert.dueDate}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-    </aside>
-  );
-}
-
 export function Feed() {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredUpdates = useMemo(() => {
-    const normalizedSearch = searchTerm.toLowerCase();
-
-    return updates.filter((update) => {
-      return (
-        update.title.toLowerCase().includes(normalizedSearch) ||
-        update.description.toLowerCase().includes(normalizedSearch) ||
-        update.project.toLowerCase().includes(normalizedSearch) ||
-        update.author.toLowerCase().includes(normalizedSearch) ||
-        update.category.toLowerCase().includes(normalizedSearch)
-      );
-    });
-  }, [searchTerm]);
-
   return (
     <AppShell
       activePage="feed"
-      title="MIS Feed"
-      description="Acompanhe em tempo real as principais movimentações, alertas e registros das obras."
-      newButtonLabel="Nova publicação"
-      fixedHeight={false}
+      title=""
+      description=""
+      newButtonLabel="Novo projeto"
     >
-      <section className="center feed-layout">
-        <ProjectPanel />
+      <main className="mis-feed">
+        <FeedStories />
 
-        <main className="feed-panel section">
-          <FeedComposer />
+        <FeedControls />
 
-          <div className="card card--compact">
-            <label className="search search-input">
-              <Search size={18} aria-hidden="true" />
-              <span className="sr-only">Buscar no feed</span>
-              <input
-                type="search"
-                placeholder="Buscar por obra, autor, categoria ou atualização..."
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-              />
-            </label>
-          </div>
-
-          <div className="group-head">
-            <span className="title">Atualizações recentes</span>
-            <span className="line" />
-          </div>
-
-          <div className="alerts">
-            {filteredUpdates.length > 0 ? (
-              filteredUpdates.map((update) => (
-                <FeedPost key={update.id} update={update} />
-              ))
-            ) : (
-              <div className="card">
-                <div className="flex items-center gap-12">
-                  <CheckCircle2 size={24} aria-hidden="true" />
-                  <div>
-                    <strong>Nenhuma publicação encontrada</strong>
-                    <p className="text-muted mt-4">
-                      Ajuste a busca para localizar outras movimentações.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </main>
-
-        <InfoPanel />
-      </section>
+        <section className="feed-card-grid">
+          {feedCards.map((item) => (
+            <WorkCard key={item.id} item={item} />
+          ))}
+        </section>
+      </main>
     </AppShell>
   );
 }

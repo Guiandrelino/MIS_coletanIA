@@ -1,5 +1,5 @@
 import { Bell, Plus, Search, Settings } from "lucide-react";
-import { ThemeSwitch } from "../ui/Themeswitch";
+import { ThemeSwitch } from "../ui/ThemeSwitch";
 
 export function Topbar({
   searchPlaceholder = "Buscar obras, tarefas, alertas...",
@@ -34,7 +34,11 @@ export function Topbar({
 
       <div className="top-actions">
         {showNewButton && (
-          <button type="button" className="btn btn--primary" onClick={onNew}>
+          <button
+            type="button"
+            className="btn btn--primary"
+            onClick={onNew}
+          >
             <Plus aria-hidden="true" />
             {newButtonLabel}
           </button>
@@ -46,7 +50,7 @@ export function Topbar({
           aria-label="Abrir notificações"
         >
           <Bell aria-hidden="true" />
-          <span className="dot">5</span>
+          <span className="dot">4</span>
         </button>
 
         <button

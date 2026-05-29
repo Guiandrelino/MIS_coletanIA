@@ -53,87 +53,95 @@ function StatCard({ stat }) {
 }
 
 function TaskCard({ task }) {
-  const statusClass = taskStatusClasses[task.status] || "blue";
   const priorityClass = taskPriorityClasses[task.priority] || "blue";
 
+  const projectDotClass = {
+    Suprimentos: "green",
+    Planejamento: "blue",
+    Documentação: "purple",
+    Financeiro: "orange",
+    Fornecedor: "red",
+    "Mão de obra": "green",
+    Cronograma: "red",
+  };
+
+  const progressByStatus = {
+    pending: 20,
+    in_progress: 60,
+    in_review: 80,
+    completed: 100,
+  };
+
+  const progress = progressByStatus[task.status] || 40;
+
+  const dueTone =
+    task.priority === "critical"
+      ? "danger"
+      : task.dueDate === "Hoje"
+      ? "today"
+      : "normal";
+
   return (
-    <article
-      className={`task ${
-        task.priority === "critical" ? "is-critical" : ""
-      } ${task.priority === "high" ? "is-warning" : ""}`}
-    >
-      <div className="flex justify-between items-start gap-16">
-        <div className="flex items-start gap-12 min-w-0">
-          <span className={`priority ${priorityClass}`}>
-            <CheckSquare size={16} aria-hidden="true" />
-          </span>
+    <article className="pending-row-card">
+      <div className="pending-check" aria-hidden="true" />
 
-          <div className="min-w-0">
-            <div className="flex items-center gap-8 mb-8">
-              <h3>{task.title}</h3>
+      <div className="pending-main">
+        <strong>{task.title}</strong>
 
-              {task.priority === "critical" && (
-                <span className="status-pill red">Crítica</span>
-              )}
-            </div>
-
-            <p className="text-muted">{task.description}</p>
-          </div>
+        <div className="pending-project">
+          <span
+            className={`pending-project-dot ${
+              projectDotClass[task.category] || "blue"
+            }`}
+          />
+          <span>{task.project}</span>
         </div>
+      </div>
 
-        <span className={`status-pill ${statusClass}`}>
-          {taskStatusLabels[task.status]}
+      <div className="pending-priority">
+        <span className={`pending-priority-pill ${priorityClass}`}>
+          <span className="pending-priority-dot" />
+          {taskPriorityLabels[task.priority]}
         </span>
       </div>
 
-      <div className="content-grid grid-4 mt-20">
-        <div className="flex items-center gap-8 text-muted">
-          <Building2 size={16} aria-hidden="true" />
-          <span>{task.project}</span>
+      <div className="pending-owner">
+        <div className="pending-avatar">
+          {task.responsible
+            .split(" ")
+            .map((name) => name[0])
+            .slice(0, 2)
+            .join("")}
         </div>
 
-        <div className="flex items-center gap-8 text-muted">
-          <MapPin size={16} aria-hidden="true" />
-          <span>{task.location}</span>
-        </div>
-
-        <div className="flex items-center gap-8 text-muted">
-          <User size={16} aria-hidden="true" />
-          <span>{task.responsible}</span>
-        </div>
-
-        <div className="flex items-center gap-8 text-muted">
-          <CalendarClock size={16} aria-hidden="true" />
-          <span>{task.dueDate}</span>
+        <div>
+          <strong>{task.responsible}</strong>
+          <span>{task.category}</span>
         </div>
       </div>
 
-      <div className="mt-20">
-        <strong className="text-soft">Checklist</strong>
-
-        <div className="alerts mt-12">
-          {task.checklist.map((item) => (
-            <div key={item} className="flex items-center gap-8 text-muted">
-              <CheckCircle2 size={15} aria-hidden="true" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
+      <div className={`pending-date ${dueTone}`}>
+        <strong>{task.dueDate}</strong>
+        <span>
+          {task.status === "completed"
+            ? "concluída"
+            : task.priority === "critical"
+            ? "ação necessária"
+            : "no prazo"}
+        </span>
       </div>
 
-      <div className="flex justify-between items-center gap-16 mt-20">
-        <div className="flex items-center gap-8">
-          <span className={`badge badge--${priorityClass}`}>
-            {taskPriorityLabels[task.priority]}
-          </span>
-
-          <span className="status-pill blue">{task.category}</span>
+      <div className="pending-progress">
+        <div className="pending-progress-bar">
+          <div style={{ width: `${progress}%` }} />
         </div>
 
-        <button type="button" className="btn--ghost">
-          Ver detalhes
-        </button>
+        <span>{progress}%</span>
       </div>
+
+      <button type="button" className="pending-more" aria-label="Mais opções">
+        •••
+      </button>
     </article>
   );
 }

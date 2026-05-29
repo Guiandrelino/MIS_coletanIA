@@ -19,6 +19,7 @@ function ProgressRing({ value = 72, trend = "↓ 2.4%" }) {
             stroke="rgba(4,102,200,.14)"
             strokeWidth="8"
           />
+
           <circle
             cx="50"
             cy="50"
@@ -38,6 +39,7 @@ function ProgressRing({ value = 72, trend = "↓ 2.4%" }) {
             {value}
             <sup>%</sup>
           </span>
+
           <span className="dls-ring-trend">{trend}</span>
         </div>
       </div>
@@ -72,10 +74,26 @@ function MiniChart() {
 
 function LeftDashboardPanel() {
   const trades = [
-    { name: "BLD 02", pct: 70, color: "#0466c8" },
-    { name: "BLD Ev", pct: 45, color: "#fbbf24" },
-    { name: "BLZ", pct: 85, color: "#0466c8" },
-    { name: "BLD Cx", pct: 28, color: "#a1a1aa" },
+    {
+      name: "BLD 02",
+      pct: 70,
+      color: "#0466c8",
+    },
+    {
+      name: "BLD Ev",
+      pct: 45,
+      color: "#fbbf24",
+    },
+    {
+      name: "BLZ",
+      pct: 85,
+      color: "#0466c8",
+    },
+    {
+      name: "BLD Cx",
+      pct: 28,
+      color: "#a1a1aa",
+    },
   ];
 
   return (
@@ -105,6 +123,7 @@ function LeftDashboardPanel() {
 
       <div className="dls-section-hdr">
         <span className="dls-eyebrow">Progresso por Setor</span>
+
         <button type="button" className="dls-pill-btn">
           Todos ∨
         </button>
@@ -118,6 +137,7 @@ function LeftDashboardPanel() {
                 className="dls-trade-dot"
                 style={{ background: trade.color }}
               />
+
               <span className="dls-trade-name">{trade.name}</span>
               <span className="dls-trade-pct">{trade.pct}%</span>
             </div>
@@ -148,16 +168,34 @@ function ConstructionHero() {
           <div className="dlc-building">
             <div
               className="dlc-floor"
-              style={{ bottom: 0, width: 270, height: 30, opacity: 1 }}
+              style={{
+                bottom: 0,
+                width: 270,
+                height: 30,
+                opacity: 1,
+              }}
             />
+
             <div
               className="dlc-floor"
-              style={{ bottom: 30, width: 252, height: 30, opacity: 1 }}
+              style={{
+                bottom: 30,
+                width: 252,
+                height: 30,
+                opacity: 1,
+              }}
             />
+
             <div
               className="dlc-floor"
-              style={{ bottom: 60, width: 234, height: 30, opacity: 0.9 }}
+              style={{
+                bottom: 60,
+                width: 234,
+                height: 30,
+                opacity: 0.9,
+              }}
             />
+
             <div
               className="dlc-floor"
               style={{
@@ -168,6 +206,7 @@ function ConstructionHero() {
                 borderStyle: "dashed",
               }}
             />
+
             <div
               className="dlc-floor"
               style={{
@@ -196,6 +235,7 @@ function ConstructionHero() {
             <br />
             Inteligente
           </h1>
+
           <p className="dlc-hero-sub">
             Plataforma MIS analisa dados em tempo real para melhorar eficiência,
             segurança e cumprimento de prazos.
@@ -218,6 +258,7 @@ function ConstructionHero() {
                 stroke="rgba(255,255,255,.18)"
                 strokeWidth="5"
               />
+
               <circle
                 cx="40"
                 cy="40"
@@ -231,6 +272,7 @@ function ConstructionHero() {
                 transform="rotate(-90 40 40)"
               />
             </svg>
+
             <span className="dlc-ring-num">27%</span>
           </div>
 
@@ -238,12 +280,15 @@ function ConstructionHero() {
             <div className="dlc-av" style={{ background: "#0466c8" }}>
               JS
             </div>
+
             <div className="dlc-av" style={{ background: "#7c3aed" }}>
               MC
             </div>
+
             <div className="dlc-av" style={{ background: "#059669" }}>
               RA
             </div>
+
             <div className="dlc-av" style={{ background: "#374151" }}>
               +3
             </div>
@@ -265,6 +310,7 @@ function WeeklyChart() {
       <div className="dlc-chart-hdr">
         <div>
           <span className="dlc-chart-eyebrow">Progresso Semanal (m²)</span>
+
           <div className="dlc-chart-metric">
             <span className="dlc-chart-big">96.5%</span>
             <span className="dlc-delta up">+2.4% ▲</span>
@@ -303,23 +349,55 @@ function WeeklyChart() {
 
 function ScheduleStrip() {
   const cells = [
-    { label: "-20h", type: "neg" },
-    { label: "-10h", type: "neg" },
-    { label: "-9.75h", type: "neg" },
-    { label: "-4.87h", type: "neg" },
-    { label: "0.0h", type: "zero" },
-    { label: "0.0h" },
-    { label: "14h", type: "pos" },
-    { label: "28h", type: "pos" },
-    { label: "4ft", type: "pos" },
-    { label: "55h", type: "pos" },
+    {
+      label: "-20h",
+      type: "neg",
+    },
+    {
+      label: "-10h",
+      type: "neg",
+    },
+    {
+      label: "-9.75h",
+      type: "neg",
+    },
+    {
+      label: "-4.87h",
+      type: "neg",
+    },
+    {
+      label: "0.0h",
+      type: "zero",
+    },
+    {
+      label: "0.0h",
+      type: "",
+    },
+    {
+      label: "14h",
+      type: "pos",
+    },
+    {
+      label: "28h",
+      type: "pos",
+    },
+    {
+      label: "4ft",
+      type: "pos",
+    },
+    {
+      label: "55h",
+      type: "pos",
+    },
   ];
 
   return (
     <div className="dlc-schedule">
       <div className="dlc-sch-hdr">
         <div className="dlc-sch-title">Cronograma de Corte e Aterro</div>
+
         <span className="dlc-sch-date">23 Abr 2025 · 10:14AM</span>
+
         <button type="button" className="dlc-icon-btn-sm">
           ∨
         </button>
@@ -327,7 +405,7 @@ function ScheduleStrip() {
 
       <div className="dlc-sch-cells">
         {cells.map((cell, index) => (
-          <div key={index} className={`dlc-cell ${cell.type || ""}`}>
+          <div key={index} className={`dlc-cell ${cell.type}`}>
             {cell.label}
           </div>
         ))}
@@ -346,12 +424,14 @@ function CenterDashboardPanel() {
   );
 }
 
-function KpiCard({ label, value, delta, tone = "orange", warn = false }) {
+function KpiCard({ label, value, delta, tone = "blue", warn = false }) {
   return (
     <div className={`dlr-kpi ${warn ? "warn" : ""}`}>
       <div className="dlr-kpi-top">
         <div className={`dlr-kpi-icon ${tone}`}>✓</div>
+
         <span className="dlr-kpi-label">{label}</span>
+
         <button type="button" className="dlr-expand">
           ↗
         </button>
@@ -369,6 +449,7 @@ function KpiCard({ label, value, delta, tone = "orange", warn = false }) {
             stroke="rgba(4,102,200,.12)"
             strokeWidth="7"
           />
+
           <circle
             cx="40"
             cy="40"
@@ -404,7 +485,8 @@ function RightDashboardPanel() {
         </button>
       </div>
 
-      <KpiCard label="Concluído" value="96.5%" delta="+2.4% ▲" />
+      <KpiCard label="Concluído" value="96.5%" delta="+2.4% ▲" tone="blue" />
+
       <KpiCard
         label="Em Andamento"
         value="62%"

@@ -53,7 +53,7 @@ export const alerts = [
     status: "read",
     responsible: "João Ferreira",
     dueDate: "Esta semana",
-    createdAt: "2026-05-27T11:05:00",
+    createdAt: "2026-05-25T11:05:00",
   },
   {
     id: "ALT-005",
@@ -81,7 +81,35 @@ export const alerts = [
     status: "read",
     responsible: "Patrícia Gomes",
     dueDate: "2 dias",
-    createdAt: "2026-05-26T14:50:00",
+    createdAt: "2026-05-21T14:50:00",
+  },
+  {
+    id: "ALT-007",
+    title: "Risco de segurança identificado",
+    description:
+      "Vistoria registrou EPIs ausentes em três trabalhadores no canteiro central. Ação imediata recomendada.",
+    project: "Villa Aurora",
+    location: "Florianópolis, SC",
+    category: "Segurança",
+    priority: "critical",
+    status: "unread",
+    responsible: "Mariana Costa",
+    dueDate: "Hoje",
+    createdAt: "2026-05-18T13:25:00",
+  },
+  {
+    id: "ALT-008",
+    title: "Orçamento próximo do limite",
+    description:
+      "O projeto utilizou 92% do orçamento aprovado. Recomenda-se revisar os próximos aportes antes da próxima medição.",
+    project: "Residencial Jardins",
+    location: "São Paulo, SP",
+    category: "Financeiro",
+    priority: "warning",
+    status: "read",
+    responsible: "João Pedro",
+    dueDate: "7 dias",
+    createdAt: "2026-05-03T10:10:00",
   },
 ];
 
@@ -127,10 +155,10 @@ export const alertStats = [
     tone: "warning",
   },
   {
-    id: "supplies",
-    label: "Suprimentos",
-    value: alerts.filter((alert) => alert.category === "Suprimentos").length,
-    variation: "Área mais recorrente",
+    id: "resolution-time",
+    label: "Tempo médio resolução",
+    value: "3,4h",
+    variation: "-22% vs mês passado",
     tone: "success",
   },
 ];
@@ -153,3 +181,44 @@ export const alertFilters = [
     label: "Não lidos",
   },
 ];
+
+export const alertPeriodFilters = [
+  {
+    id: "all",
+    label: "Todo período",
+  },
+  {
+    id: "today",
+    label: "Hoje",
+  },
+  {
+    id: "7d",
+    label: "7 dias",
+  },
+  {
+    id: "30d",
+    label: "30 dias",
+  },
+];
+
+export const criticalAlerts = alerts.filter(
+  (alert) => alert.priority === "critical"
+);
+
+export const unreadAlerts = alerts.filter((alert) => alert.status === "unread");
+
+export const warningAlerts = alerts.filter(
+  (alert) => alert.priority === "warning"
+);
+
+export const recentAlerts = alerts.slice(0, 5);
+
+export const alertsByCategory = alerts.reduce((acc, alert) => {
+  if (!acc[alert.category]) {
+    acc[alert.category] = [];
+  }
+
+  acc[alert.category].push(alert);
+
+  return acc;
+}, {});

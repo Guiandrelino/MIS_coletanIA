@@ -9,25 +9,48 @@ export function AppShell({
   actions,
   children,
   fixedHeight = false,
-  newButtonLabel,
+  newButtonLabel = "Novo",
+  showTopbar = true,
+  showPageHeader = true,
+  className = "",
+  onNew,
 }) {
   const { navigateTo } = useAppNavigation();
 
+  const hasTitle =
+    typeof title === "string" && title.trim().length > 0;
+
+  const hasDescription =
+    typeof description === "string" && description.trim().length > 0;
+
+  const hasPageHeaderContent =
+    showPageHeader && (hasTitle || hasDescription || actions);
+
   return (
-    <div className="app app-shell">
+    <div className={["app app-shell", className].filter(Boolean).join(" ")}>
       <Sidebar activePage={activePage} onNavigate={navigateTo} />
 
       <main className={`main app-main ${fixedHeight ? "is-fixed-height" : ""}`}>
-        <Topbar newButtonLabel={newButtonLabel} />
+        {showTopbar && (
+          <Topbar
+            newButtonLabel={newButtonLabel}
+            onNew={onNew}
+          />
+        )}
 
-        {(title || description || actions) && (
+        {hasPageHeaderContent && (
           <header className="page-header">
             <div>
-              {title && <h1>{title}</h1>}
-              {description && <p>{description}</p>}
+              {hasTitle && <h1>{title}</h1>}
+
+              {hasDescription && <p>{description}</p>}
             </div>
 
-            {actions && <div className="page-header__actions">{actions}</div>}
+            {actions && (
+              <div className="page-header__actions">
+                {actions}
+              </div>
+            )}
           </header>
         )}
 

@@ -57,54 +57,25 @@ function SupplyItem({ item }) {
   const priorityClass = supplyPriorityClasses[item.priority] || "blue";
 
   return (
-    <article className="item">
-      <div className="item-top">
-        <div className="item-left">
-          <span className={`priority ${statusClass}`}>
-            <Package size={16} aria-hidden="true" />
-          </span>
+    <article className="supply-clean-item">
+      <div className="supply-clean-main">
+        <span className={`supply-clean-dot ${statusClass}`} />
 
-          <div>
-            <div className="item-name">{item.name}</div>
-
-            <div className="item-qty">
-              Estoque atual: <strong>{item.quantity}</strong>
-            </div>
-
-            <div className="item-qty">
-              Mínimo recomendado: <strong>{item.minimumStock}</strong>
-            </div>
-          </div>
-        </div>
-
-        <div className="item-right">
-          <span className={`status-pill ${statusClass}`}>
-            {supplyStatusLabels[item.status]}
-          </span>
-
-          <span className={`status-pill ${priorityClass}`}>
-            {supplyPriorityLabels[item.priority]}
-          </span>
+        <div className="supply-clean-info">
+          <h4>{item.name}</h4>
+          <p>{item.quantity}</p>
+          <span>{item.description}</span>
         </div>
       </div>
 
-      <p className="item-description">{item.description}</p>
+      <div className="supply-clean-actions">
+        <span className={`supply-clean-pill ${statusClass}`}>
+          {supplyStatusLabels[item.status]}
+        </span>
 
-      <div className="content-grid grid-3 mt-16">
-        <div className="flex items-center gap-8 text-muted">
-          <Truck size={15} aria-hidden="true" />
-          <span>{item.supplier}</span>
-        </div>
-
-        <div className="flex items-center gap-8 text-muted">
-          <Package size={15} aria-hidden="true" />
-          <span>{item.category}</span>
-        </div>
-
-        <div className="flex items-center gap-8 text-muted">
-          <AlertTriangle size={15} aria-hidden="true" />
-          <span>{item.deliveryDate}</span>
-        </div>
+        {item.status === "critical" && (
+          <span className="supply-clean-warning">⚠</span>
+        )}
       </div>
     </article>
   );
@@ -112,69 +83,39 @@ function SupplyItem({ item }) {
 
 function WorkCard({ supply }) {
   const [isExpanded, setIsExpanded] = useState(true);
-  const statusClass = supplyStatusClasses[supply.status] || "blue";
 
   return (
-    <article className="work-card">
-      <div className="work-header">
-        <div className="work-left">
+    <article className="supply-clean-card">
+      <header className="supply-clean-header">
+        <div className="supply-clean-project">
           <img src={supply.image} alt="" />
 
-          <div className="work-info">
+          <div>
             <h3>{supply.project}</h3>
-            <p>{supply.location}</p>
+            <p>
+              {supply.location} • {supply.summary.totalItems} itens
+            </p>
 
-            <div className="work-badges">
-              <span className={`mini-badge ${statusClass}`}>
-                {supplyStatusLabels[supply.status]}
+            {supply.summary.criticalItems > 0 && (
+              <span className="supply-clean-critical">
+                {supply.summary.criticalItems} críticos
               </span>
-
-              <span className="mini-badge blue">
-                {supply.summary.totalItems} itens
-              </span>
-
-              {supply.summary.criticalItems > 0 && (
-                <span className="mini-badge red">
-                  {supply.summary.criticalItems} críticos
-                </span>
-              )}
-            </div>
+            )}
           </div>
         </div>
 
         <button
           type="button"
-          className="expand-btn"
+          className="supply-clean-toggle"
           aria-label={isExpanded ? "Recolher itens" : "Expandir itens"}
           onClick={() => setIsExpanded((current) => !current)}
         >
-          {isExpanded ? (
-            <ChevronUp size={18} aria-hidden="true" />
-          ) : (
-            <ChevronDown size={18} aria-hidden="true" />
-          )}
+          {isExpanded ? "⌃" : "⌄"}
         </button>
-      </div>
-
-      <div className="content-grid grid-3 mb-16">
-        <div className="card card--compact">
-          <span className="text-muted">Pedidos</span>
-          <strong>{supply.summary.pendingOrders}</strong>
-        </div>
-
-        <div className="card card--compact">
-          <span className="text-muted">Entregues</span>
-          <strong>{supply.summary.deliveredThisWeek}</strong>
-        </div>
-
-        <div className="card card--compact">
-          <span className="text-muted">Responsável</span>
-          <strong>{supply.responsible}</strong>
-        </div>
-      </div>
+      </header>
 
       {isExpanded && (
-        <div className="items">
+        <div className="supply-clean-list">
           {supply.items.map((item) => (
             <SupplyItem key={item.id} item={item} />
           ))}

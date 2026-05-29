@@ -656,6 +656,8 @@
 .construct-bottom-card {
   padding: 16px;
   min-height: 238px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ALERTS */
@@ -729,16 +731,17 @@
 /* PHASES */
 
 .construct-phase-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .construct-phase {
   display: grid;
-  grid-template-columns: 95px minmax(0, 1fr) 40px;
+  grid-template-columns: 108px minmax(0, 1fr) 42px;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .construct-phase > span {
@@ -748,7 +751,7 @@
 }
 
 .construct-phase > div {
-  height: 6px;
+  height: 8px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.06);
   overflow: hidden;
@@ -761,7 +764,7 @@
 }
 
 .construct-phase strong {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 900;
   text-align: right;
 }
@@ -819,8 +822,10 @@
 /* OUTRAS OBRAS */
 
 .construct-works-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .construct-work-row {
